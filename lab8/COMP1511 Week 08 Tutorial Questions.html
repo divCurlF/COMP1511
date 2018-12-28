@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<title>
+
+COMP1511 Week 08 Tutorial Questions
+
+</title>
+<!-- <link href="/static/bootstrap.min.css" rel="stylesheet"> -->
+<link crossorigin="anonymous" href="COMP1511%20Week%2008%20Tutorial%20Questions_files/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+<link href="COMP1511%20Week%2008%20Tutorial%20Questions_files/course.css" rel="stylesheet">
+<!-- <script type="text/javascript" src="/static/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/static/bootstrap.min.js"></script> -->
+<script src="COMP1511%20Week%2008%20Tutorial%20Questions_files/jquery-3.js"></script>
+<script src="COMP1511%20Week%2008%20Tutorial%20Questions_files/popper.js"></script>
+<script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="COMP1511%20Week%2008%20Tutorial%20Questions_files/bootstrap.js"></script>
+<script src="COMP1511%20Week%2008%20Tutorial%20Questions_files/course.html" type="text/javascript"></script>
+<!-- prism code-highligting -->
+<link href="COMP1511%20Week%2008%20Tutorial%20Questions_files/prism.css" rel="stylesheet">
+<!-- defer loading of prism.js script until DOM is loaded, as per PR #26 and https://stackoverflow.com/a/24070373 -->
+
+<script defer="defer" src="COMP1511%20Week%2008%20Tutorial%20Questions_files/prism.js" type="text/javascript"></script>
+<link href="https://cgi.cse.unsw.edu.au/~cs1511/18s2/" rel="canonical">
+</head>
+<body class="container">
+
+
+<div style="clear:both">
+<div class=" ">
+<a class="heading_link" href="https://webcms3.cse.unsw.edu.au/COMP1511/18s2/" id="left_heading_link" target="_blank">COMP1511 18s2</a>
+</div>
+<h2> Week-08 Tutorial Exercises </h2>
+</div>
+<p></p>             
+
+
+
+
+<div class="tutlab tut">
+<ol>
+
+<li>
+The tutorial will start with a code review.
+<p>
+Discuss the good, the bad and the ugly aspects of their code.
+</p><p>
+Please be gentle in any criticism - we are all learning!
+
+</p></li>
+
+<li>
+
+Have you submitted your first assignment? 
+<p>
+Have you learnt anything you think would be useful to share with the tutorial?
+</p>
+</li>
+
+<li>
+<p>If your tutorial is on Monday, your tutor will explain the following.
+</p><ol type="a">
+<li>
+My program works when I run it, <b>autotest</b> says I have an uninitialized variable,
+how can it work with an uninitialized variable.
+
+<div></div>
+</li><li>
+How does <b>dcc</b> help you find errors?
+
+<div></div>
+</li><li>
+
+How does <b>dcc --valgrind</b>  help you find errors?
+
+<div></div>
+</li><li>
+Why do autotests and automarking run both <b>dcc</b> and <b>dcc --valgrind</b>?
+
+<div></div>
+</li><li>
+What is <b>dcc --leakcheck</b>?
+
+<div></div>
+</li></ol>
+</li><li>
+
+Last week's lab used an array of this struct to store a whale sighting:
+
+<pre class="program">#define MAX_SPECIES_NAME_LENGTH 128
+struct pod {
+    struct date when;
+    int         how_many;
+    char        species[MAX_SPECIES_NAME_LENGTH];
+};
+</pre>
+
+This week's lab will use a linked list of this struct to store a whale sighting
+
+<pre class="program">struct pod {
+    struct pod  *next;
+    struct date *when;
+    int         how_many;
+    char        *species;
+};
+</pre>
+
+A date is still represented by the same struct:
+
+<pre class="program">struct date {
+    int year;
+    int month;
+    int day;
+};
+</pre>
+
+Sketch out how these two representation would be laid out in memory.
+<p>
+Discuss the differences and how that will affect this week's lab exercises.
+
+</p><div></div>
+</li>
+
+
+<li>
+<ol type="a">
+<li>
+Assume you have a function with the following prototype:
+
+<pre class="program">void write_sighting(FILE *f, struct pod *p);
+</pre>
+
+which prints the details of the sighting point to by <b>p</b> to stream <b>f</b>
+<p>
+Write a function with this prototype:
+
+</p><pre class="program">void write_sightings_file(char filename[], struct pod *first_pod);
+</pre>
+
+which opens the file it is given as argument and calls
+<b>write_sighting</b> to print the details of all the pod structs in the linked list it is given.
+
+<div></div>
+</li><li>(Optional) :
+Write a function with this prototype:
+
+<pre class="program">void write_date(FILE *f, struct date *d);
+</pre>
+
+which prints details of a <b>date</b> struct to stream <b>f</b>.
+
+<div></div>
+</li><li>
+Write a function with this prototype:
+
+<pre class="program">void write_sighting(FILE *f, struct pod *p);
+</pre>
+
+which prints details of a sighting (<b>pod</b> struct) to stream <b>f</b>.
+
+<div></div>
+</li>
+</ol>
+
+</li><li>
+<ol type="a">
+<li>
+Assume you have a function with the following prototype:
+
+<pre class="program">struct pod *read_sighting(FILE *stream)
+</pre>
+
+which mallocs a <b>pod</b> struct and assigns values to its fields,
+which are read from a line of the stream that it is given as an argument.
+<p>
+Write a function with this prototype:
+
+</p><pre class="program">struct pod *read_sightings_file(char filename[])
+</pre>
+
+which opens the file it is given as argument and calls
+<b>read_sighting</b> to create pod structs containing the information in the file.
+<p>
+<b>read_sightings_file</b> should return these pod structs as a linked list.
+
+</p><div></div>
+</li>
+
+<li>(Optional) : 
+Write a function with this prototype:
+
+<pre class="program">struct date *read_date(FILE *f);
+</pre>
+
+which mallocs a <b>date</b> struct and assigns values to its fields,
+from values read from stream <b>f</b>.
+
+<div></div>
+</li><li>
+Write a function with this prototype:
+
+<pre class="program">struct pod *read_sighting(FILE *f);
+</pre>
+
+which mallocs a <b>pod struct</b> and assigns values to its fields read from stream <b>f</b>.
+
+<div></div>
+</li>
+
+</ol>
+
+</li><li>
+
+Discuss the remainder code which you are given for the lab exercises and what you have to
+do for the standard lab exercises.
+
+    
+        <pre class="program language-clike" style=""><code class=" language-clike">#include <span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">&gt;</span>
+#include <span class="token operator">&lt;</span>string<span class="token punctuation">.</span>h<span class="token operator">&gt;</span>
+#include <span class="token operator">&lt;</span>stdlib<span class="token punctuation">.</span>h<span class="token operator">&gt;</span>
+
+#define MAX_SPECIES_NAME_LENGTH <span class="token number">4096</span>
+
+<span class="token comment">// a struct to represent the date</span>
+<span class="token comment">// a whale pod sighting was made</span>
+
+struct date <span class="token punctuation">{</span>
+    int year<span class="token punctuation">;</span>
+    int month<span class="token punctuation">;</span>
+    int day<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// a struct to represent a sighting</span>
+<span class="token comment">// of a pod (group) of whales</span>
+
+struct pod <span class="token punctuation">{</span>
+    struct pod  <span class="token operator">*</span>next<span class="token punctuation">;</span>
+    struct date <span class="token operator">*</span>when<span class="token punctuation">;</span>
+    int         how_many<span class="token punctuation">;</span>
+    char        <span class="token operator">*</span>species<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+struct pod <span class="token operator">*</span><span class="token function">read_sightings_file</span><span class="token punctuation">(</span>char filename<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+struct pod <span class="token operator">*</span><span class="token function">read_sighting</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+struct date <span class="token operator">*</span><span class="token function">read_date</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+int <span class="token function">count_orca_sightings</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+int <span class="token function">main</span><span class="token punctuation">(</span>int argc<span class="token punctuation">,</span> char <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span>stderr<span class="token punctuation">,</span> <span class="token string">"Usage: %s &lt;file&gt;\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    struct pod <span class="token operator">*</span>first_pod <span class="token operator">=</span> <span class="token function">read_sightings_file</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    int n_orca_pods <span class="token operator">=</span> <span class="token function">count_orca_sightings</span><span class="token punctuation">(</span>first_pod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d Orca sightings in %s\n"</span><span class="token punctuation">,</span> n_orca_pods<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// return the number of sightings of Orca</span>
+
+int <span class="token function">count_orca_sightings</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// REPLACE THIS COMMENT WITH YOUR CODE</span>
+    <span class="token comment">// YOU ARE NOT PERMITTED TO USE ARRAYS</span>
+    <span class="token comment">// THIS FUNCTION SHOULD NOT CALL SCANF OR PRINTF</span>
+    <span class="token comment">// IT SHOULD JUST RETURN A VALUE</span>
+    <span class="token keyword">return</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// CHANGE ME</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">//</span>
+<span class="token comment">// DO NOT CHANGE THE FUNCTIONS BELOW HERE</span>
+<span class="token comment">//</span>
+
+<span class="token comment">// return linked list of sightings read from filename</span>
+<span class="token comment">// exit called if there is an error</span>
+
+struct pod <span class="token operator">*</span><span class="token function">read_sightings_file</span><span class="token punctuation">(</span>char filename<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    FILE <span class="token operator">*</span>f <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>f <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span>stderr<span class="token punctuation">,</span><span class="token string">"error: file '%s' can not open\n"</span><span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    struct pod <span class="token operator">*</span>first_sighting <span class="token operator">=</span> NULL<span class="token punctuation">;</span>
+    struct pod <span class="token operator">*</span>last_sighting <span class="token operator">=</span> NULL<span class="token punctuation">;</span>
+
+    struct pod <span class="token operator">*</span>sighting <span class="token operator">=</span> <span class="token function">read_sighting</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>sighting <span class="token operator">!=</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>first_sighting <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            first_sighting <span class="token operator">=</span> sighting<span class="token punctuation">;</span>
+            first_sighting<span class="token operator">-</span><span class="token operator">&gt;</span>next <span class="token operator">=</span> NULL<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            last_sighting<span class="token operator">-</span><span class="token operator">&gt;</span>next <span class="token operator">=</span> sighting<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        last_sighting <span class="token operator">=</span> sighting<span class="token punctuation">;</span>
+        sighting <span class="token operator">=</span> <span class="token function">read_sighting</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> first_sighting<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// read a whale sighting (date, number of whales, whale species)</span>
+<span class="token comment">// return a pointer to a malloced struct containing these details</span>
+<span class="token comment">// return NULL if a sighting can not be read</span>
+
+struct pod <span class="token operator">*</span><span class="token function">read_sighting</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    struct pod <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>sizeof <span class="token punctuation">(</span>struct pod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span>stderr<span class="token punctuation">,</span> <span class="token string">"out of memory\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    p<span class="token operator">-</span><span class="token operator">&gt;</span>next <span class="token operator">=</span> NULL<span class="token punctuation">;</span>
+
+    p<span class="token operator">-</span><span class="token operator">&gt;</span>when <span class="token operator">=</span> <span class="token function">read_date</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token operator">&gt;</span>when <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> NULL<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    int n_scanned <span class="token operator">=</span> <span class="token function">fscanf</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token operator">&gt;</span>how_many<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n_scanned <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> NULL<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">fgetc</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    char species_buffer<span class="token punctuation">[</span>MAX_SPECIES_NAME_LENGTH<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">fgets</span><span class="token punctuation">(</span>species_buffer<span class="token punctuation">,</span> MAX_SPECIES_NAME_LENGTH<span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> NULL<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+   <span class="token comment">// finish string at '\n' if there is one</span>
+    char <span class="token operator">*</span>newline_ptr <span class="token operator">=</span> <span class="token function">strchr</span><span class="token punctuation">(</span>species_buffer<span class="token punctuation">,</span> <span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>newline_ptr <span class="token operator">!=</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">*</span>newline_ptr <span class="token operator">=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// also finish string at '\r' if there is one - files from Windows  will</span>
+    newline_ptr <span class="token operator">=</span> <span class="token function">strchr</span><span class="token punctuation">(</span>species_buffer<span class="token punctuation">,</span> <span class="token string">'\r'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>newline_ptr <span class="token operator">!=</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">*</span>newline_ptr <span class="token operator">=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// malloc a char array long enough to hold species name</span>
+    <span class="token comment">// and copy species to it</span>
+    p<span class="token operator">-</span><span class="token operator">&gt;</span>species <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span>species_buffer<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token operator">&gt;</span>species <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span>stderr<span class="token punctuation">,</span> <span class="token string">"out of memory\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">strcpy</span><span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token operator">&gt;</span>species<span class="token punctuation">,</span> species_buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> p<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// read a date in year/month/day format from stream f</span>
+<span class="token comment">// return a pointer to a malloced date struct containing them</span>
+<span class="token comment">//  return NULL if a date can not be read</span>
+
+struct date <span class="token operator">*</span><span class="token function">read_date</span><span class="token punctuation">(</span>FILE <span class="token operator">*</span>f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    struct date <span class="token operator">*</span>d <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>sizeof <span class="token punctuation">(</span>struct date<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>d <span class="token operator">==</span> NULL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span>stderr<span class="token punctuation">,</span> <span class="token string">"out of memory\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    int n_scanned <span class="token operator">=</span> <span class="token function">fscanf</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token string">"%d/%d/%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>d<span class="token operator">-</span><span class="token operator">&gt;</span>year<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>d<span class="token operator">-</span><span class="token operator">&gt;</span>month<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span>d<span class="token operator">-</span><span class="token operator">&gt;</span>day<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n_scanned <span class="token operator">!=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> NULL<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3>Revision questions</h3>
+
+The remaining tutorial questions are primarily intended for revision - either this week
+or later in session.
+<p>
+Your tutor may still choose to cover some of the questions time permitting.
+</p><p>
+</p></li><li>
+<ul>
+<li>
+
+Write a C function <code>split_string</code> which takes a string read by fgets containing
+substrings separated by commas, places the substrings in an char[][] array and
+returns the number of strings.
+<p>
+You can assume there are at most 128 words on the line and no word is more
+than 32 characters long.
+
+</p></li><li>
+
+Write a C function <code>print_substrings</code> which prints one per line the substrings in
+the char[][] array created in the previous question.
+
+</li><li>
+
+Write a C function <code>substrings_sorted</code> which given the char[][] array in the previous question
+returns 1 if the substrings are increasing order and 0 otherwise.
+
+</li><li>
+
+Write a C function <code>search_substrings</code> which given the char[][] array in the previous question
+returns 1 if the array contains a specified string and 0 otherwise.
+
+</li><li>
+
+Write a program <code>substring.c</code> which reads lines using fgets and calls the above functions.
+</li></ul>
+<div></div>
+</li><li>
+    Write a function that is given two <code>struct date</code> pointers and compares returns 0 if they are equal,
+    -1 if the first is less than the second and 1 if the first is larger than the second.
+
+<pre class="program">int compare_date(struct date *d1, struct date *d2);
+</pre>
+</li></ol>
+</div>
+<footer class="mt-3 container text-center no-print">
+<p class="text-muted">
+<strong>COMP1511 18s2: Programming Fundamentals</strong>
+is brought to you by <br>
+the <a href="https://www.cse.unsw.edu.au/">School of Computer Science and Engineering</a>
+at the <a href="https://www.unsw.edu.au/">University of New South Wales</a>, Sydney.<br>
+For all enquiries, please email the class account at
+<a href="mailto:@cse.unsw.edu.au">cs1511@cse.unsw.edu.au</a><br>
+<small>CRICOS Provider 00098G</small>
+</p>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<title>
+
+COMP1511 Week 08 Laboratory Exercises
+
+</title>
+
+<!-- <link href="/static/bootstrap.min.css" rel="stylesheet"> -->
+<link crossorigin="anonymous" href="COMP1511%20Week%2008%20Laboratory%20Exercises_files/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+<link href="COMP1511%20Week%2008%20Laboratory%20Exercises_files/course.css" rel="stylesheet">
+<!-- <script type="text/javascript" src="/static/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/static/bootstrap.min.js"></script> -->
+<script src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/jquery-3.js"></script>
+<script src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/popper.js"></script>
+<script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/bootstrap.js"></script>
+<script src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/course.js" type="text/javascript"></script>
+<!-- prism code-highligting -->
+<link href="COMP1511%20Week%2008%20Laboratory%20Exercises_files/prism.css" rel="stylesheet">
+<!-- defer loading of prism.js script until DOM is loaded, as per PR #26 and https://stackoverflow.com/a/24070373 -->
+<script defer="defer" src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/prism.js" type="text/javascript"></script>
+<link href="https://cgi.cse.unsw.edu.au/~cs1511/18s2/" rel="canonical">
+
+<script src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/MathJax.js" async=""></script>
+
+<style>
+        .ctrlD {
+            border: 1px grey solid;
+            border-radius: 8px;
+            padding: 1px 10px;
+        }
+    </style>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+
+
+<body class="container"><div id="MathJax_Message" style="display: none;"></div>
+
+    <div style="clear:both">
+        <div class=" ">
+            <a class="heading_link" href="https://webcms3.cse.unsw.edu.au/COMP1511/18s2/" id="left_heading_link" target="_blank">COMP1511 18s2</a>
+        </div>
+        <h2> Week-08 Laboratory Exercises </h2>
+    </div>
+
+
+
+
+      <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Topics</h3>
+            </div>
+            <div class="card-body" style="background-color: lightyellow; ">
+                <ul>
+ 
+                    <li class="itemize">
+                        <a href="#gettingstarted">Getting Started</a>
+                    </li>
+                        <li class="itemize">
+                            <a href="#ex00">Exercise 00: Reminder - Mandelbrot Art Gallery (individual) (same as in week-07)</a>
+			</li>
+                        <li class="itemize">
+                            <a href="#ex01">Exercise 01: How many Orca Pods (pair) </a>
+                        </li>
+                        <li class="itemize">
+                            <a href="#ex02">Exercise 02: Counting A Whale Species (pair)</a>
+                        </li>
+                        <li class="itemize">
+                            <a href="#ex03">Exercise 03: Printing A summary of All Whale Species (pair)</a>
+                        </li>
+                        <li class="itemize">
+                            <a href="#ex04">Exercise 04: Print Whale Sightings For a Range of Days (pair)</a>
+                        </li>
+                        
+                        <li class="itemize alert-danger">
+                            <a href="#ex05">Exercise 05: Merge Whale Sightings from the Same Day (individual)[Challenge Exercise] </a>
+                        </li>
+                          
+                </ul>
+            </div>
+        </div>
+
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">
+                Preparation
+            </h3>
+</div>
+<div class="card-body">
+<p>
+Before the lab you should re-read the relevant lecture slides and their accompanying examples.
+<b>We will only assess lab Exercises 01, 02, 03 and 04 to derive marks for this lab.</b> However, you
+will learn a lot by attempting and solving the challenge exercises.
+</p>                
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">
+                Getting Started
+            </h3>
+</div>
+<div class="card-body">
+Create a new directory for this lab called <code>lab08</code> by typing:
+
+<pre class="command_line"><kbd class="shell">mkdir lab08</kbd>
+</pre>
+
+Change to this directory by typing:
+
+<pre class="command_line"><kbd class="shell">cd lab08</kbd>
+</pre>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header alert alert-success" id="ex00">
+<h3 class="card-title">
+                Exercise-00: Reminder - Mandelbrot Art Gallery (individual) (same as in week-07)
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is an individual exercise to complete by yourself.
+    </div>
+
+
+<div class="alert alert-success">
+This exercise is due at the end of <b>week 8</b> (two weeks from now)
+</div>
+
+<div class="alert alert-info">
+Check out the
+<a class="alert-link" href="https://cgi.cse.unsw.edu.au/~cs1511/18s2/mandelvision/index.html">
+MandelbrArt Gallery!</a>
+</div>
+
+<p>You've created your Mandelbrot server, you've got the technical side of
+things working... now it's time to actually <strong>use</strong> your code, and to
+exercise your aesethetic senses.</p>
+
+<p>Find/create the most beautiful colored tile from the Mandelbrot set
+that you can.  Submit your pixelColor.c file from the Mandelbrot
+activity AND also the file xanadu.h (sample below)
+which defines the x y and z coordinates for your tile.</p>
+
+<pre class=" language-clike language-clike"><code class=" language-clike"><span class="token comment">/*
+ * xanadu.h
+ * Defines the centre of your beautiful colored tile image of the
+ * Mandelbrot set.
+ * Your name here:
+ * Your description here:
+ */</span>
+
+<span class="token comment">// Replace these three values with your own chosen numbers</span>
+#define CENTER_X <span class="token number">1.0</span>
+#define CENTER_Y <span class="token number">0.0</span>
+#define ZOOM <span class="token number">9</span></code></pre>
+
+<p>We'll regenerate the tile using your code, and display them in the
+<a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2/mandelvision/index.html">
+MandelbrArt Gallery</a>.</p>
+
+<p>Note that you can submit as many times as you want, but only your latest
+submission will be displayed in the gallery (so don't be afraid to experiment!).</p>
+
+<p>Don't forget to also submit your pixelColor.c, so that we can
+re-generate the tile using your color scheme.</p>
+
+<p>
+
+    When you are finished working on this exercise you must submit
+    your work by running <b>give</b>:
+
+</p><pre class="command_line"><kbd class="shell">give cs1511 wk07_mandelbrotBeauty xanadu.h pixelColor.c</kbd>
+</pre>
+
+    You must run give before <b>Sunday 16 September  23:59:59</b> (end of <b>week 8</b>) to obtain the marks for this lab exercise.
+    Note, this is an individual exercise, the work you submit with <b>give</b> must be entirely your own.
+</div>
+</div>
+
+
+
+
+
+
+<div class="card">
+<div class="card-header alert alert-success" id="ex01">
+<h3 class="card-title">
+                Exercise-01: How many Orca Pods in a List (pair)
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is a pair exercise to complete with your lab partner.
+    </div>
+
+
+This week's lab exercises will use the same data as last week
+but with different data structures.  First, a reminder of the data.
+<p>
+A citizen science project monitoring whale populations
+has files containing large numbers of whale observations.
+Each line in these files contains:
+
+</p><ul>
+<li> the date the observation was made
+</li><li> the number of whales in the pod
+</li><li> the species of whales
+</li></ul>
+
+Here is a <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/orca_list//whales.txt">file of example data</a> which you can
+download to test your program.   It looks like this:
+
+<pre class="command_line"><kbd class="shell">head whales.txt</kbd>
+18/01/18  9 Pygmy right whale
+01/09/17 21 Southern right whale
+16/02/18  4 Striped dolphin
+02/07/17  4 Common dolphin
+19/02/18  4 Blue whale
+21/02/18 38 Dwarf sperm whale
+14/06/17 29 Southern right whale
+20/06/17  3 Spinner dolphin
+22/07/17 34 Indo-Pacific humpbacked dolphin
+20/03/18  7 Long-finned pilot whale
+</pre>
+
+Here is the <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/orca_list//orca_list.c">starting code</a> for this exercise.
+<p>
+It already contains the functions which
+you discussed in your tutorial which reads the file of whale sightings into a linked list of structs.
+You do not need need to change these functions.
+</p><p>
+As you discussed in your tutorial, the struct used to represent each  whale sighting
+has changed from last week.  It is now this:
+
+</p><pre class="program">struct pod {
+    struct pod  *next;
+    struct date *when;
+    int         how_many;
+    char        *species;
+};
+</pre>
+
+The main function in <b>orca_list.c</b> has this code:
+
+<pre class="program">int n_orca_pods = count_orca_sightings(first_pod);
+printf("%d Orca sightings in %s\n", n_orca_pods, argv[1]);
+</pre>
+
+Your task in this exercise is to complete this function:
+
+
+
+
+
+
+    
+        
+    
+
+
+
+    
+        <pre class="program language-clike"><code class=" language-clike">int <span class="token function">count_orca_sightings</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// REPLACE THIS COMMENT WITH YOUR CODE</span>
+    <span class="token comment">// YOU ARE NOT PERMITTED TO USE ARRAYS</span>
+    <span class="token comment">// THIS FUNCTION SHOULD NOT CALL SCANF OR PRINTF</span>
+    <span class="token comment">// IT SHOULD JUST RETURN A VALUE</span>
+    <span class="token keyword">return</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// CHANGE ME</span>
+<span class="token punctuation">}</span></code></pre>
+<p>
+Do <b>not</b>  change any other function.
+</p><p>
+You are not permitted to use an array in your answer to this question.
+</p><p>
+It should return a  count of the number of sightings of Orca pods in the file.
+</p><p>
+Note,  "pod" is the collective number for a group of whales.  Your functions should return
+the number of Orca pods.  It does not have have to sum the number of individual whales in these pods.
+
+</p><p>
+When you have completed the function <b>count_orca_sightings</b> this is how <b>orca_list.c</b> should behave:
+
+</p><pre class="command_line"><kbd class="shell">dcc -o orca_list orca_list.c</kbd>
+<kbd class="shell">./orca_list whales.txt</kbd>
+53 Orca sightings in whales.txt
+</pre>
+<b>Hint</b>: only small changes are necessary to  last week's code
+<p>
+<b>Hint</b>: if you need help understanding how structs can be linked into a list with pointers
+watch this great explanation from COMP1511 tutor Mark Sonnenschein:
+</p><p>
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/LLHha6S-kOA.html" width="640" height="360" frameborder="0"></iframe>
+</p><p>
+<b>Hint</b>: if you you need to revise pointers or structs these videos prepared by COMP1511 tutor may help:
+</p><p>
+</p><ul>
+<li> <a href="https://youtu.be/RJUkGjY-1-M">Structs - the Basics</a>
+</li><li> <a href="https://www.youtube.com/watch?v=eX-1SLfeeHo&amp;list=PLbSaCpDlfd6qHRp1RVAB1kpRJ9zoQYuwV&amp;index=13">Pointers - why use them</a>
+</li><li> <a href="https://www.youtube.com/watch?v=eX-1SLfeeHo&amp;list=PLbSaCpDlfd6qHRp1RVAB1kpRJ9zoQYuwV&amp;index=14">Pointers - Walkthrough (Coding)</a>
+</li><li> <a href="https://www.youtube.com/watch?v=eX-1SLfeeHo&amp;list=PLbSaCpDlfd6qHRp1RVAB1kpRJ9zoQYuwV&amp;index=15">Pointers - Walkthrough using a swap function</a>
+</li><li> <a href="https://www.youtube.com/watch?v=npWW_Lmw4-E&amp;list=PLbSaCpDlfd6qHRp1RVAB1kpRJ9zoQYuwV&amp;index=16">Pointers - Walkthrough using a swap function (coding)</a>
+</li></ul>
+<p>
+When you think your program is working you can use <code>autotest</code> to run some simple automated tests:
+
+</p><pre class="command_line"><kbd class="shell">1511 autotest orca_list</kbd>
+</pre>
+
+    When you are finished on this exercise you and your lab partner must both submit
+    your work by running <b>give</b>:
+
+
+
+<pre class="command_line"><kbd class="shell">give cs1511 wk08_orca_list orca_list.c</kbd>
+</pre>
+
+
+    Note, even though this is a pair exercise, you both must run <b>give</b> from your
+    own account before <b>Sunday 16 September 23:59:59</b> to obtain the marks for this lab exercise.
+
+
+
+
+</div>
+</div>
+<div class="card">
+<div class="card-header alert alert-success" id="ex02">
+<h3 class="card-title">
+                Exercise-02: Counting A Whale Species in a List (pair)
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is a pair exercise to complete with your lab partner.
+    </div>
+
+
+
+
+
+
+
+
+
+Here is the <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/species_count_list//species_count_list.c">starting code</a> for this exercise.
+<p>
+It already contains the functions which
+you discussed in your tutorial which reads the file of whale sightings into a linked list of structs.
+You do not need need to change these functions.
+</p><p>
+The main function in <b>species_count_list.c</b> has this code:
+
+</p><pre class="program">struct pod *first_pod = read_sightings_file(argv[1]);
+
+int pod_count;
+int whale_count;
+species_count(species, first_pod, &amp;pod_count, &amp;whale_count);
+printf("%d %s pods containing %d whales in %s\n", pod_count, species, whale_count, filename);
+</pre>
+
+Your task in this exercise is to complete this function:
+
+
+
+
+
+
+    
+        
+    
+
+
+
+    
+        <pre class="program language-clike"><code class=" language-clike">void <span class="token function">species_count</span><span class="token punctuation">(</span>char species<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">,</span> int <span class="token operator">*</span>n_pods<span class="token punctuation">,</span> int <span class="token operator">*</span>n_whales<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// REPLACE THIS COMMENT WITH YOUR CODE</span>
+    <span class="token comment">// THIS FUNCTION SHOULD NOT CALL SCANF OR PRINTF</span>
+    <span class="token comment">// IT SHOULD JUST ASSIGN VALUES to N_PODS AND N_WHALES</span>
+    <span class="token operator">*</span>n_pods <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span> <span class="token comment">// CHANGE ME</span>
+    <span class="token operator">*</span>n_whales <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// CHANGE ME</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+
+
+
+
+Do <b>not</b>  change any other function.
+<p>
+You are not permitted to use arrays in this exercise.
+</p><p>
+<b>species_count</b> should assign the number of pods of the given species to <code>*n_pods</code> and  the total number of whales of the given species to <code>*n_whales</code>.
+</p><p>
+When you have completed the function <b>species_count</b> this is how <b>species_count_list.c</b> should behave:
+
+</p><pre class="command_line"><kbd class="shell">dcc -o species_count_list species_count_list.c</kbd>
+<kbd class="shell">./species_count_list whales.txt "Blue whale"</kbd>
+51 Blue whale pods containing 1171 whales in whales.txt
+<kbd class="shell">./species_count_list whales.txt "Indo-Pacific humpbacked dolphin"</kbd>
+43 Indo-Pacific humpbacked dolphin pods containing 897 whales in whales.txt
+</pre>
+<p>
+When you think your program is working you can use <code>autotest</code> to run some simple automated tests:
+
+</p><pre class="command_line"><kbd class="shell">1511 autotest species_count_list</kbd>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    When you are finished on this exercise you and your lab partner must both submit
+    your work by running <b>give</b>:
+
+
+
+<pre class="command_line"><kbd class="shell">give cs1511 wk08_species_count_list species_count_list.c</kbd>
+</pre>
+
+
+    Note, even though this is a pair exercise, you both must run <b>give</b> from your
+    own account before <b>Sunday 16 September 23:59:59</b> to obtain the marks for this lab exercise.
+
+
+
+
+</div>
+</div>
+<div class="card">
+<div class="card-header alert alert-success" id="ex03">
+<h3 class="card-title">
+                Exercise-03: Print A Day's Whale Sightings (pair)
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is a pair exercise to complete with your lab partner.
+    </div>
+
+
+Here is the <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/day_whale_list//day_whale_list.c">starting code</a> for this exercise.
+<p>
+It already contains the functions which
+you discussed in your tutorial which reads the file of whale sightings into a linked list of structs.
+You do not need need to change these functions.
+</p><p>
+The main function in <b>day_whale_list.c</b> has this code:
+
+</p><pre class="program">struct pod *first_pod = read_sightings_file(argv[1]);
+struct date *day = string_to_date(argv[2]);
+
+day_whales(first_pod, day);
+</pre>
+
+Your task in this exercise is to complete this function:
+
+
+
+
+
+
+    
+        
+    
+
+
+
+    
+        <pre class="program language-clike"><code class=" language-clike">void <span class="token function">day_whales</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">,</span> struct date <span class="token operator">*</span>day<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// PUT YOUR CODE HERE</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+
+
+
+
+Do <b>not</b>  change any other function.
+<p>
+<b>day_whales</b> should <b>print</b> every whale sighting on the specified day in the order they
+occur in the linked list of structs.
+</p><p>
+You should add at least one new function.
+</p><p>
+You are not permitted to use arrays in this exercise.
+</p><p>
+When you have completed the function <b>day_whales</b> this is how <b>day_whale_list.c</b> should behave:
+
+</p><pre class="command_line"><kbd class="shell">dcc -o day_whale_list day_whale_list.c</kbd>
+<kbd class="shell">./day_whale_list whales.txt 31/03/18</kbd>
+11 Common dolphin
+9 Bryde's whale
+11 Dwarf sperm whale
+35 Pygmy right whale
+3 Common dolphin
+20 Long-finned pilot whale
+8 Dwarf sperm whale
+<kbd class="shell">./day_whale_list whales1.txt 10/05/17</kbd>
+14 Sei whale
+34 Indo-Pacific humpbacked dolphin
+</pre>
+<p>
+When you think your program is working you can use <code>autotest</code> to run some simple automated tests:
+
+</p><pre class="command_line"><kbd class="shell">1511 autotest day_whale_list</kbd>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    When you are finished on this exercise you and your lab partner must both submit
+    your work by running <b>give</b>:
+
+
+
+<pre class="command_line"><kbd class="shell">give cs1511 wk08_day_whale_list day_whale_list.c</kbd>
+</pre>
+
+
+    Note, even though this is a pair exercise, you both must run <b>give</b> from your
+    own account before <b>Sunday 16 September 23:59:59</b> to obtain the marks for this lab exercise.
+
+
+
+
+</div>
+</div>
+<div class="card">
+<div class="card-header alert alert-success" id="ex04">
+<h3 class="card-title">
+                Exercise-04: Print Whale Sightings For a Range of Days (pair)
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is a pair exercise to complete with your lab partner.
+    </div>
+
+
+
+Here is the <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/between_days_whale_list//between_days_whale_list.c">starting code</a> for this exercise.
+<p>
+It already contains the functions which
+you discussed in your tutorial which reads the file of whale sightings into a linked list of structs.
+You do not need need to change these functions.
+</p><p>
+The main function in <b>between_days_whale_list.c</b> has this code:
+
+</p><pre class="program">struct pod *first_pod = read_sightings_file(argv[1]);
+struct date *start_day = string_to_date(argv[2]);
+struct date *finish_day = string_to_date(argv[3]);
+
+between_days_whales(first_pod, start_day, finish_day);
+</pre>
+
+Your task in this exercise is to complete this function:
+
+
+
+
+
+
+    
+        
+    
+
+
+
+    
+        <pre class="program language-clike"><code class=" language-clike">void <span class="token function">between_days_whales</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">,</span> struct date <span class="token operator">*</span>start_day<span class="token punctuation">,</span> struct date <span class="token operator">*</span>finish_day<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// PUT YOUR CODE HERE</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+
+
+
+
+Do <b>not</b>  change any other function.
+<p>
+<b>between_days_whales</b> should <b>print</b> every whale sighting 
+between the specified two dates, including the dates themselves.  The 
+sightings should be printed in the order they occur in the linked list 
+of structs.
+</p><p>
+You should add at least two new functions.
+</p><p>
+You are not permitted to use arrays in this exercise.
+</p><p>
+When you have completed the function <b>between_days_whales</b> this is how <b>between_days_whale_list.c</b> should behave:
+
+</p><pre class="command_line"><kbd class="shell">dcc -o between_days_whale_list between_days_whale_list.c</kbd>
+<kbd class="shell">./between_days_whale_list whales.txt 25/02/18  03/03/18</kbd>
+25/02/18  4 Dwarf sperm whale
+03/03/18  8 Pygmy right whale
+02/03/18 31 Sei whale
+02/03/18 20 Long-finned pilot whale
+26/02/18  9 Spinner dolphin
+27/02/18 17 Dwarf minke whale
+02/03/18 23 Pygmy sperm whale
+25/02/18  5 Humpback whale
+25/02/18 14 Humpback whale
+02/03/18 37 Short-finned pilot whale
+01/03/18 35 Long-finned pilot whale
+03/03/18 32 Long-finned pilot whale
+01/03/18 39 Fin whale
+28/02/18 33 Southern right whale
+27/02/18  1 Fin whale
+01/03/18 24 Humpback whale
+25/02/18  4 Long-finned pilot whale
+28/02/18  3 Short-finned pilot whale
+<kbd class="shell">./between_days_whale_list whales.txt 29/12/17  03/01/18</kbd>
+30/12/17  2 Coastal bottlenose dolphin
+29/12/17 24 Dwarf sperm whale
+03/01/18 21 Fin whale
+29/12/17 34 Pygmy right whale
+02/01/18  2 Short-finned pilot whale
+29/12/17 12 Striped dolphin
+30/12/17  2 Orca
+03/01/18 41 Indo-Pacific humpbacked dolphin
+03/01/18  1 Dwarf minke whale
+30/12/17 29 Striped dolphin
+03/01/18  6 Coastal bottlenose dolphin
+30/12/17 25 Pygmy right whale
+02/01/18  5 Spinner dolphin
+02/01/18 33 Short-finned pilot whale
+03/01/18 27 Coastal bottlenose dolphin
+01/01/18 35 Indo-Pacific humpbacked dolphin
+03/01/18 25 Dwarf sperm whale
+</pre>
+<b>Hint</b>: use the printf format <code>"%02d/%02d/%02d"</code> to print dates and <code>"%2d"</code> to print how many whales.
+
+
+
+<p>
+When you think your program is working you can use <code>autotest</code> to run some simple automated tests:
+
+</p><pre class="command_line"><kbd class="shell">1511 autotest between_days_whale_list</kbd>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    When you are finished on this exercise you and your lab partner must both submit
+    your work by running <b>give</b>:
+
+
+
+<pre class="command_line"><kbd class="shell">give cs1511 wk08_between_days_whale_list between_days_whale_list.c</kbd>
+</pre>
+
+
+    Note, even though this is a pair exercise, you both must run <b>give</b> from your
+    own account before <b>Sunday 16 September 23:59:59</b> to obtain the marks for this lab exercise.
+
+
+
+
+</div>
+</div>
+<div class="card">
+<div class="card-header alert alert-danger" id="ex05">
+<h3 class="card-title">
+                Exercise-05: Merge Whale Sightings from the Same Day (individual)[Challenge Exercise]
+            </h3>
+</div>
+<div class="card-body">
+<div class="alert alert-info">
+    This is an individual exercise to complete by yourself.
+    </div>
+
+
+
+
+
+
+
+
+
+Here is the <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s2//activities/merge_day_whales//merge_day_whales.c">starting code</a> for this exercise.
+<p>
+It already contains the functions which
+you discussed in your tutorial which reads the file of whale sightings into a linked list of structs.
+You do not need need to change these functions.
+</p><p>
+The main function in <b>merge_day_whales.c</b> has this code:
+
+</p><pre class="program">struct pod *first_pod = read_sightings_file(argv[1]);
+
+merge_day_whales(first_pod);
+
+write_sightings(stdout, first_pod);
+</pre>
+
+Your task in this exercise is to complete this function:
+
+
+
+
+
+
+    
+        
+    
+
+
+
+    
+        <pre class="program language-clike"><code class=" language-clike">void <span class="token function">merge_day_whales</span><span class="token punctuation">(</span>struct pod <span class="token operator">*</span>first_pod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// PUT YOUR CODE HERE</span>
+<span class="token punctuation">}</span></code></pre>
+
+
+
+
+
+
+Do <b>not</b>  change any other function.
+<p>
+<b>merge_day_whales</b> should merge any subsequent sighting of the same whale species on
+the same day into the first sighting in the list of that whale species on that day.
+</p><p>
+The number of whales seen in subsequent sightings should be added to the number of
+whales seen in the first sighting.
+</p><p>
+The subsequent sightings (if any) should be deleted from the list
+and all associated memory freed.
+</p><p>
+You should add at least one new function.
+</p><p>
+You are not permitted to use arrays in this exercise.
+</p><p>
+You are not permitted to use malloc in this exercise, apart from its use in the supplied code.
+</p><p>
+When you have completed the function <b>merge_day_whales</b> this is how <b>merge_day_whales.c</b> should behave:
+
+</p><pre class="command_line"><kbd class="shell">cat unmerged_whales.txt</kbd>
+18/01/18  9 Pygmy right whale
+01/09/17 21 Southern right whale
+18/01/18  1 Pygmy right whale
+18/01/18  1 Pygmy right whale
+16/02/18  4 Striped dolphin
+16/02/18  4 Striped dolphin
+18/01/18  1 Pygmy right whale
+02/07/17  4 Common dolphin
+16/02/18  5 Striped dolphin
+03/02/18  6 Pygmy right whale
+18/01/18  3 Pygmy right whale
+<kbd class="shell">dcc -o merge_day_whales merge_day_whales.c</kbd>
+<kbd class="shell">./merge_day_whales unmerged_whales.txt merged_whales.txt</kbd>
+<kbd class="shell">cat merged_whales.txt</kbd>
+18/01/18 15 Pygmy right whale
+01/09/17 21 Southern right whale
+16/02/18 13 Striped dolphin
+02/07/17  4 Common dolphin
+03/02/18  6 Pygmy right whale
+</pre>
+<p>
+If <b>autotest</b> gives you a <b>free not called for memory allocated with malloc</b> error you can
+reproduce this by compiling and running with <code>dcc --leak-check</code>, e.g.:
+
+</p><pre class="command_line"><kbd class="shell">dcc --leak-check -o merge_day_whales merge_day_whales.c</kbd>
+<kbd class="shell">./merge_day_whales unmerged_whales.txt merged_whales.txt</kbd>
+Error: free not called for memory allocated with malloc in function read_date in test_merge_day_whales.c at line 161.
+</pre>
+
+Make sure when you delete a sighting from the list, you free the memory for
+the sighting (struct pod) and the whale species name and the sighting date.
+<p>
+<b>Hint</b>: if you don't understand how to delete a struct from a linked list watch  COMP1511 tutor Mark Sonnenschein.
+explain the concepts:
+</p><p>
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/cpIPcX8HVQU.html" width="640" height="360" frameborder="0"></iframe>
+</p><p>
+and then  Dillon Giacoppo explain the coding:
+</p><p>
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" src="COMP1511%20Week%2008%20Laboratory%20Exercises_files/EAqlb4EMd_g.html" width="640" height="360" frameborder="0"></iframe>
+</p><p>
+</p><p>
+When you think your program is working you can use <code>autotest</code> to run some simple automated tests:
+
+</p><pre class="command_line"><kbd class="shell">1511 autotest merge_day_whales</kbd>
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    When you are finished working on this exercise you must submit
+    your work by running <b>give</b>:
+
+
+
+<pre class="command_line"><kbd class="shell">give cs1511 wk08_merge_day_whales merge_day_whales.c</kbd>
+</pre>
+
+
+    <!--You must run give before <b>Sunday 16 September 23:59:59</b> to obtain the marks for this lab exercise.
+    Note, this is an individual exercise, the work you submit with <b>give</b> must be entirely your own.-->
+
+
+
+
+</div>
+</div>
+
+
+
+
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">
+                Submission
+            </h3>
+</div>
+<div class="card-body">
+
+
+When you are finished with each exercise make sure you submit your work by running <b>give</b>.
+<p>
+You can run <b>give</b> multiple times.
+Only your last submission will be marked.
+</p><p>
+Don't submit any exercises you haven't attempted.
+</p><p>
+If you are working at home, you may find it more convenient
+to upload your work via
+ <a href="https://cgi.cse.unsw.edu.au/~give/code/login.php?app=/~give/Student/give.php&amp;debug=get_authuser">give's web interface</a>.
+</p><p>
+Remember you have until
+
+<b>Sunday 16 September 23:59:59</b>
+
+
+to submit your work.
+</p>
+
+</div>
+</div>
+
+
+
+<footer class="mt-3 container text-center no-print">
+<p class="text-muted">
+<strong>COMP1511 18s2: Programming Fundamentals</strong>
+is brought to you by <br>
+the <a href="https://www.cse.unsw.edu.au/">School of Computer Science and Engineering</a>
+at the <a href="https://www.unsw.edu.au/">University of New South Wales</a>, Sydney.<br>
+For all enquiries, please email the class account at
+<a href="mailto:@cse.unsw.edu.au">cs1511@cse.unsw.edu.au</a><br>
+<small>CRICOS Provider 00098G</small>
+</p>
+</footer>
+
+
+</body></html>

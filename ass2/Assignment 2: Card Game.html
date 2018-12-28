@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Assignment 2: Card Game </title>
+
+    <link rel="stylesheet" href="Assignment%202:%20Card%20Game_files/main.html">
+    
+    <link rel="stylesheet" href="Assignment%202:%20Card%20Game_files/ass2.css">
+    <link rel="canonical" href="https://www.cse.unsw.edu.au/">
+  <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body><div id="MathJax_Message" style="display: none;"></div>
+
+<main class="container" aria-label="Content">
+
+
+<div align="center">
+    <h2><span style="font-size:18pt">COMP1511: Assignment 2 </span><br>
+    <span style="font-size:22pt">Card Game</span> (Draft version)</h2>
+<p style="margin:2px 40px; background-color:#ffffcc; padding: 6px; border-radius:6px;">
+    This is a draft version, and the specification may change.
+    <br>A notice on the class web page will be posted after each major revision,
+    so please check class notice board frequently. 
+    <br>Also frequently check the change log on this page for minor changes.</p><p>
+
+    </p>
+</div>
+
+<div>
+
+<p><!-- Page Index --></p>
+
+<!--
+<p class="nav justify-content-center mt-3 mb-4"><a href="#objectives" class="nav-link">Objectives</a>
+<a href="#before-you-begin" class="nav-link">Before you begin…</a>
+<a href="#the-task" class="nav-link">The Task</a>
+<a href="#testing" class="nav-link">Testing</a>
+<a href="#competition" class="nav-link">Competition</a>
+<a href="#submitting" class="nav-link">Submitting</a>
+<a href="#assessment" class="nav-link">Assessment</a>
+<a href="#resources" class="nav-link">Resources</a></p>
+-->
+
+<p>The game <em>Final Card-Down</em> is a card game played with a special printed
+deck.</p>
+
+<p>Each card has a <em>value</em> between 0 and F,
+a <em>suit</em> of either hearts, diamonds, clubs, spades, or
+questions,
+and a <em>color</em> of either red, green, blue, yellow, or
+purple.</p>
+
+<p><img src="Assignment%202:%20Card%20Game_files/card-BLUE-2-DIAMONDS.png" alt="Blue 2 of Diamonds" class="float-left w-25 mx-0 my-2 p-2" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-RED-13-DIAMONDS.png" alt="Red D of Diamonds" class="float-left w-25 mx-0 my-2 p-2" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-GREEN-12-QUESTIONS.png" alt="Green C of Questions" class="float-left w-25 mx-0 my-2 p-2" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-PURPLE-12-SPADES.png" alt="Purple C of Spades" class="float-left w-25 mx-0 my-2 p-2" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-YELLOW-13-QUESTIONS.png" alt="Yellow D of Questions" class="float-left w-25 mx-0 my-2 p-2 d-md-none" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-PURPLE-15-HEARTS.png" alt="Purple F of Hearts" class="float-left w-25 mx-0 my-2 p-2 d-md-none" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-RED-10-SPADES.png" alt="Red A of Spades" class="float-left w-25 mx-0 my-2 p-2 d-md-none" width="10%">
+<img src="Assignment%202:%20Card%20Game_files/card-YELLOW-3-SPADES.png" alt="Yellow 3 of Spades" class="float-left w-25 mx-0 my-2 p-2 d-md-none" width="10%"></p>
+
+<p>Each <em>player</em> is dealt a <em>hand</em> of 7 cards.
+The first <em>player</em> to place their <em>final card down</em> in the discard pile
+wins.</p>
+
+<p>For more details about the <em>game</em>, 
+see the <a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/rules/index.html"><strong>Final Card-Down Rules</strong></a></p>
+
+<hr>
+<h2>Deadline (Individual assignment)</h2>
+<blockquote class="blockquote text-center mt-4 mb-2">
+  <p>This is an <b>individual</b>. </p>
+
+  <p>This assignment is due on
+<strong>Thursday, Week-13 </strong>,
+at <strong>23:59:00</strong> (Sydney time).</p>
+
+</blockquote>
+
+<h2 id="objectives">Objectives</h2>
+
+<p>For this assignment,
+not only will you be implementing a card game,
+but you’ll also be writing a <i>player</i> (say using an <em>artificial intelligence</em>!) to play the
+game.</p>
+
+<ol>
+<li>Implement the ADT (Game.h) and the rules of the card game.
+</li>
+ <li>Implement a set of <em>tests</em> (in testGame.c) for an <em>Abstract Data Type</em> (ADT)
+that represents the rules of a card game (Game.h).</li>
+<li>Write a Player (say using an <em>artificial intelligence</em>) to play the game for you (player.c).
+</li>
+</ol>
+
+<h2 id="before-you-begin">Before you begin…</h2>
+
+<h3 id="making-a-plan">Making a plan</h3>
+
+<p>Make a plan about how to approach the assignment.
+Don’t assume that you can do it all in one go.
+Break it up into parts and make sure you write tests
+for anything before you implement it.</p>
+
+<p>Set yourself goals, like having a certain set of functions
+implemented and tested by a particular date.</p>
+
+<p>Make a plan about how you will implement the ADT,
+use divide and conquer strategy.</p>
+
+<p>Make sure to properly review your code to improve 
+style and fix any bugs you might find. 
+</p>
+
+
+<h3 id="understanding-the-problem">Understanding the problem</h3>
+
+<p>Read through <a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/rules/index.html"><strong>the Game Rules</strong></a> to get a better understanding
+of how the game works and how you might represent it with code.</p>
+
+<p>Then, read carefully through the <strong>.h</strong> files and try to figure out
+what information you will need to store to represent a <em>current state</em> of the game
+and how you might want to store it in your ADT.</p> 
+
+<p><b style="color:darkred;font-size:1.4em;">Hints:</b> How can you represent say a "deck of cards", using a list of cards? You can use <tt>Card.h</tt> and <tt>Card.c</tt>
+ (provided, see below) to represent a card. 
+
+How about "discard pile", "draw pile", four "hands", etc. What other 
+information do you need to keep in order to follow all the rules for 
+this game? Every "<em>action</em>" (move) needs to change a current 
+state of the game based on the "rules". Most of the required information
+ are also derived from a current state of the game. So, it is important 
+to first understand what we need to store and how to represent a state 
+of the game. If you do this properly, your other tasks will be 
+simplified. You may want to define a <tt>struc</tt> to represent a current state, with the required fields to represent all the values we need to represent a state of the game. 
+
+</p><h3 id="get-the-files">Get the files</h3>
+
+<p>There are three header files you’ll need for this assignment:</p>
+
+<ul>
+  <li><a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/Card.h"><strong>Card.h</strong></a> and <a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/Card.c"><strong>Card.c</strong></a></li><a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/Card.c">
+  </a><li><a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/Card.c"></a><a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/Game.h"><strong>Game.h</strong></a></li>
+  <li><a href="https://www.cse.unsw.edu.au/~cs1511/18s2/assigns/ass2/files/player.h"><strong>player.h</strong></a></li>
+</ul>
+
+<p>You MUST NOT modify these header files!
+
+If required, you should declare
+any additional constants, structures, and prototypes
+in the .c file that implements them.
+Make sure you mark your own helper functions <b><code class="highlighter-rouge">static</code></b>.</p>
+
+<p>The files that you need to create are:</p>
+
+<ul>
+  <li><strong>testGame.c</strong>, which tests an implementation of
+the functions in <strong>Game.h</strong>,</li>
+  <li><strong>Game.c</strong>, which implements the functions
+described in <strong>Game.h</strong>, and</li>
+  <li><strong>player.c</strong>, which implements a player using the function
+described in <strong>player.h</strong>.</li>
+</ul>
+
+<p>You can download <strong>Card.c</strong> file listed above and use it, please note that you do not need to submit Card.c file. 
+
+
+</p><h2 id="the-task">The Task</h2>
+
+<h3 id="writing-the-game-adt">Writing the Game ADT</h3>
+
+<p>Your game implementation should be implemented in <strong>Game.c</strong>
+and implement the functions from <strong>Game.h</strong>.
+Don’t try and implement the ADT in one go,
+but try and break it up into parts,
+making sure you have tests for each part
+before trying to implement it.</p>
+
+<p>Once you have written some tests (see below),
+you can start testing your implementation.
+It is important that you continue to write and improve your tests
+as you work on your Game implementation.
+This will help you ensure that when you find bugs in your code
+they get removed for good
+and as your code gets more complex
+you can still be sure that it is correct.</p>
+
+<!--
+<p>Try and submit a basic implementation of the ADT as soon as possible.</p>
+-->
+
+<h3 id="testing-the-adt">Testing the ADT</h3>
+
+<p>Start by writing a simple set of tests first.
+The tests should be implemented in <strong>testGame.c</strong>
+and test the implementation of the functions in <strong>Game.h</strong>.
+This will help you get an understanding of how the game works.
+You should continually work on improving the tests you write
+ throughout the assignment period.
+
+</p>
+
+<p class="alert alert-warning">It is incorrect to write tests
+using inputs that are invalid for a function.</p>
+
+
+<h3 id="the-ai">The Player</h3>
+
+
+<p>
+you need to implement a Player (say using <em>artificial intelligence</em>!)
+ to play the game for you.
+You must implement the function found in <strong>player.h</strong>
+and your Player can use any of the functions from <strong>Game.h</strong>,
+except those which specify that they should not be used by a Player,
+to determine what move it should make.</p>
+
+<p>Your player should not take more than two seconds to decide its move.
+If your player takes too long to decide on its action,
+the game will end and your player will be <em>at fault</em>.</p>
+
+
+<h2 id="competition">Competition</h2>
+
+<p>Later in the session, we will also hold a competition.
+Each competition will have your player 
+play in games against 3 other players.
+At the end of each competition
+the aim is to score the fewest total points
+over all the games your player played in.</p>
+
+<p>A game can end in one of the following ways:</p>
+
+<ul>
+  <li>A player plays their final card, winning the game,</li>
+  <li>A player is unable to make a move and there is no way to draw a card
+(such as both the draw and discard piles being empty),</li>
+  <li>A player takes too long to make a move,</li>
+  <li>A player tries to make an illegal action, or</li>
+  <li>A player tries to use a function that a player should not access.</li>
+</ul>
+
+<p>If a player causes to end the game in any way other than by winning the
+game or a player being unable to draw a card, they will be considered <em>at fault</em>.</p>
+
+
+<h2 id="submitting">Submitting</h2>
+
+<p>You need to submit the following three files:
+</p><ul>
+<li><em>Game.c</em>
+</li><li><em>testGame.c</em>
+</li><li><em>player.c</em>
+</li></ul>
+
+<p>Instructions on how to submit your assignment will be available later</p>
+<p>Important: You need to submit your working progress by submitting all
+ three files at the end of week-10, week-11, week-12 and of course final
+ submission before the due date.
+</p>
+
+<h2 id="assessment">Assessment</h2>
+
+<p>This assignment will contribute 13% to your final mark.</p>
+
+<h3 id="mark-breakdown">Mark breakdown</h3>
+
+<p class="alert alert-warning">Your combined mark for correctness + performance is capped at <strong>80%</strong>.</p>
+
+<table class="table" style="margin-left:100px;">
+  <tbody>
+
+    <tr>
+      <td>40%</td>
+      <td><strong>Game.c</strong> correctness</td>
+    </tr>
+    <tr>
+      <td>30%</td>
+      <td><strong>testGame.c</strong> correctness</td>
+    </tr>    
+    
+    <tr>
+      <td>15%</td>
+      <td><strong>player.c</strong> performance</td>
+    </tr>
+    <tr>
+      <td>20%</td>
+      <td>Code style</td>
+    </tr>
+ 
+  </tbody>
+</table>
+
+<p>You may have noticed that the percentages above add to more than 100%.
+This is because your combined mark
+for correctness+performance (testGame.c, Game.c, player.c)
+is capped at 80%,
+which means that you can still get full marks for correctness
+without needing your player to be at the top of the leader-board.</p>
+
+<h3 id="plagiarism">Plagiarism</h3>
+
+<p>Keep in mind that if you “cheat” on this assignment, the only person
+you’re cheating is yourself. We give you these assignments so that you
+can gain experience and develop new skills. If you plagiarise, you’re
+throwing away a great opportunity, and letting down your team-mates.</p>
+
+<p>We will adhere to the very strict Plagiarism policy of UNSW.</p>
+
+<h3 id="late-penalty">Late Penalty</h3>
+
+<p>The assignment is due at <strong>23:59:59</strong>
+on <strong>Thursday of Week-13.</strong>, Sydney time.</p>
+
+<p>You will not be able to submit late, as a part of the assessment
+is of your time and project management.</p>
+
+<p>It is essential that you consistently work on the assignment,
+and at the end of each week (as mentioned above) submit the progress you have thus far.</p>
+
+<p>This is not an assignment that you can just rush through immediately
+before the due date: you will need to demonstrate
+consistent, incremental improvement throughout the
+period of the assignment.</p>
+
+
+<h2 id="resources">ChangeLog</h2>
+
+<div class="alert alert-info" id="changelog">
+
+  <ul>
+    <li> nothing as yet!
+  </li></ul>
+
+</div>
+<p><!-- #changelog --></p>
+
+
+</div>
+
+    </main>
+<hr>
+<hr>
+    <footer class="mt-3 container text-center no-print">
+  <p class="text-muted">
+    <strong>COMP1511 18s2: Introduction to Programming</strong>
+    is brought to you by <br>
+    the <a href="https://www.cse.unsw.edu.au/">School of Computer Science and Engineering</a>
+    at the <a href="https://www.unsw.edu.au/">University of New South Wales</a>, Sydney.<br>
+    For all enquiries, please email the class account at
+    <a href="mailto:cs1511@cse.unsw.edu.au">cs1511@cse.unsw.edu.au</a><br>
+
+    <small>CRICOS Provider 00098G</small>
+  </p>
+</footer>
+
+
+    <script src="Assignment%202:%20Card%20Game_files/jquery-3.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous">
+    </script>
+    <script src="Assignment%202:%20Card%20Game_files/tether.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+    </script>
+    <script src="Assignment%202:%20Card%20Game_files/bootstrap.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" async="1" src="Assignment%202:%20Card%20Game_files/MathJax.js">
+    </script>
+
+    <script type="text/javascript">
+      // Hide navigiation in iframe
+      if (window.self !== window.top) {
+        document.body.classList.add("iframe");
+      }
+    </script>
+  
+
+</body></html>

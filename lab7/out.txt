@@ -1,0 +1,12 @@
+18/01/18  9 Pygmy right whale
+17/09/01 21 Southern right whale
+18/02/16  4 Striped dolphin
+17/07/02  4 Common dolphin
+18/02/19  4 Blue whale
+18/02/21 38 Dwarf sperm whale
+17/06/14 29 Southern right whale
+17/06/20  3 Spinner dolphin
+17/07/22 34 Indo-Pacific humpbacked dolphin
+18/03/20  7 Long-finned pilot whale
+18/03/11 19 Short-finned pilot whale
+17/09/24  5 Southern right whale

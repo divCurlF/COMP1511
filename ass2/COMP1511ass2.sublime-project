@@ -1,0 +1,30 @@
+{
+	"folders":
+	[
+		{
+			"path":"src"
+		}
+	],
+	"settings":
+	{
+		"tabs_size": 4
+	},
+	"linters":
+	{
+		"gcc": {
+			"disable": false,
+			"c_executable": "gcc",
+			"c_extra_flags": [
+				"-Werror",
+				"-Wall",
+				"-Werror",
+				"-lm",
+				"-g"
+			],
+		},
+	},
+	"include_dirs": [
+		"${project_folder}/src",
+		"C:\\MinGW\\include"
+	]
+}
