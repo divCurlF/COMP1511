@@ -1,3 +1,3 @@
 # COMP1511 18S2
 
-all course exercises are solved here.
+All my lab and tutorial work for COMP1511.
